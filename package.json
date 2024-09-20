@@ -1,7 +1,7 @@
 {
   "name": "taskl",
   "version": "1.0.0",
-  "description": "easy set up beautiful logs for CLI",
+  "description": "Easy set up beautiful logs for CLI",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",

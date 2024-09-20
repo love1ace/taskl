@@ -1,6 +1,6 @@
 # Taskl
 
-**Taskl** allows you to easily set up beautiful CLI logs.
+**Taskl** is a simple and easy-to-use library for creating beautiful logs for CLI.
 
 ![npm](https://img.shields.io/npm/v/taskl)
 ![license](https://img.shields.io/npm/l/taskl)
