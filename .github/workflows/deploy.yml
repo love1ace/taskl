@@ -1,4 +1,4 @@
-name: Taskl Publish
+name: Node.js Package Publish
 
 on:
   push:
@@ -25,12 +25,12 @@ jobs:
       - name: Authenticate to npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
-      # 4. 패치 버전 자동 증가
+      # 4. Git 사용자 정보 설정 및 버전 자동 증가
       - name: Bump version and push tag
         run: |
-          npm version patch  # 패치 버전 0.0.1 증가
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          npm version patch  # 패치 버전 0.0.1 증가
           git push origin main --tags
 
       # 5. npm 설치
