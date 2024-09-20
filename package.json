@@ -1,6 +1,6 @@
 {
   "name": "taskl",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Easy set up beautiful logs for CLI",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
