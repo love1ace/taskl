@@ -1,4 +1,4 @@
-name: Node.js Package Publish
+name: Taskl Publish
 
 on:
   push:
@@ -13,37 +13,23 @@ jobs:
       # 1. 저장소 체크아웃
       - name: Check out the repository
         uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}  # 기본적으로 제공되는 GITHUB_TOKEN 사용
 
-      # 2. Node.js 설치
+      # 2. Node.js 설치 (원하는 Node 버전을 설정 가능)
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'npm'
 
-      # 3. npm 인증 설정
+      # 3. npm 인증 설정 (NPM_TOKEN을 이용해 자동 로그인)
       - name: Authenticate to npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
-      # 4. Git 사용자 정보 설정 및 버전 자동 증가
-      - name: Bump version and push tag
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          npm version patch
-          git add package.json
-          git commit -m "Bump version to $(npm pkg get version)"
-          git push origin main --tags
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # 5. npm 설치
+      # 4. npm 설치
       - name: Install dependencies
         run: npm install
 
-      # 6. npm publish 실행
+      # 5. npm publish 실행
       - name: Publish package
         run: npm publish
         env:
