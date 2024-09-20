@@ -13,6 +13,8 @@ jobs:
       # 1. 저장소 체크아웃
       - name: Check out the repository
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # 기본적으로 제공되는 GITHUB_TOKEN 사용
 
       # 2. Node.js 설치
       - name: Setup Node.js
@@ -30,8 +32,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          npm version patch  # 패치 버전 0.0.1 증가
+          npm version patch
+          git add package.json
+          git commit -m "Bump version to $(npm pkg get version)"
           git push origin main --tags
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # 5. npm 설치
       - name: Install dependencies
