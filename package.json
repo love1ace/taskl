@@ -1,7 +1,7 @@
 {
   "name": "taskl",
-  "version": "1.0.3",
-  "description": "Easy set up beautiful logs for CLI",
+  "version": "1.0.4",
+  "description": "A useful tool for managing asynchronous tasks and logs in CLI",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
